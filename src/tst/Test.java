@@ -1,5 +1,7 @@
 package tst;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Test {
@@ -136,6 +138,7 @@ public class Test {
         } catch (Exception e) {
             print(2,e.getMessage());
         } finally {
+            // 往往用来进行垃圾回收，销毁对象等
             print(3,"finally");
         }
 
@@ -143,10 +146,36 @@ public class Test {
 
     //面向对象例子
     public static void demo00() {
-        Animal a = new Animal("Tom",21);
-        a.say();
+//        Animal a = new Animal("Tom",21);
+//        a.say();
+        Animal b = new Human("Tim", 22, "CN");
+        b.say();
+    }
+
+    //方法举例
+    public static void demoFunction() {
+        //随机数的setSed
+        Random random = new Random();
+      //  random.setSeed(1);
+        print(1,random.nextInt(1000));
+        print(2,random.nextDouble());
+       //随机打乱
+        List<Integer> array = Arrays.asList(new Integer[]{1,2,3,4,5});
+        Collections.shuffle(array);
+        print(3,array);
+
+        //时间:yyyy-MM-dd HH:mm:ss
+        Date date = new Date();
+        print(4,date);
+        print(5,date.getTime());
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        print(6,df.format(date));
+
+        print(7,UUID.randomUUID());
+        print(8,Math.ceil(2.2));
+        print(9,Math.floor(2.2));
     }
     public static void main(String[] args) {
-        demo00();
+        demoFunction();
     }
 }
